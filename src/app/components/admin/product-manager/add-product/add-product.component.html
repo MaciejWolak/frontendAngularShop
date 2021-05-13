@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <div class="card">
+      <div class="card-header text-center">Add Product</div>
+      <div class="card-body">
+        <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+
+          <div class="form-group">
+            <label for="name">Product name</label>
+            <input id="name" class="form-control"
+                   [ngClass]="{ 'is-invalid': addProductForm.get('name').touched && addProductForm.get('name').invalid}"
+                   formControlName="name">
+            <span class="invalid-feedback">Name can't be blank</span>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Product description</label>
+            <textarea class="form-control" formControlName="description"
+                      [ngClass]="{ 'is-invalid': addProductForm.get('description').touched && addProductForm.get('description').invalid}"
+                      id="description" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Product price</label>
+            <input id="price" type="number" min="1" class="form-control"
+                   [ngClass]="{ 'is-invalid': addProductForm.get('price').touched && addProductForm.get('price').invalid}"
+                   formControlName="price">
+            <span class="invalid-feedback">Price can't be blank</span>
+          </div>
+
+          <div class="form-group">
+            <label for="quantity">Product quantity</label>
+            <input id="quantity" type="number" min="0,01" class="form-control"
+                   [ngClass]="{ 'is-invalid': addProductForm.get('quantity').touched && addProductForm.get('quantity').invalid}"
+                   formControlName="quantity">
+            <span class="invalid-feedback">Quantity can't be blank</span>
+          </div>
+
+          <!--          <div class="form-group">
+                      <label>Product image</label>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" required>
+                        <label class="custom-file-label" for="validatedInputGroupCustomFile">Choose file...</label>
+                      </div>
+
+                    </div>-->
+
+
+          <button class="btn btn-primary btn-block">Add Product</button>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

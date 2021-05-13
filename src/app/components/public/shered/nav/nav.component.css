@@ -1,0 +1,18 @@
+.cart-icon{
+  position: relative;
+}
+.cart-icon i{
+  font-size: 30px;
+  color: forestgreen;
+}
+.cart-value{
+  position: absolute;
+  top:20px;
+  right: 10px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 4px 10px;
+  font-weight: 800;
+  font-size: 12px;
+}

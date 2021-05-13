@@ -1,0 +1,27 @@
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Username</th>
+    <th scope="col">Email</th>
+    <th scope="col">Authority</th>
+
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let user of userTable">
+  <tr>
+    <th scope="row">{{user.id}}</th>
+    <td>{{user.username}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.authority}}</td>
+    <td>
+      <button type="button" class="btn btn-primary" (click)="getUser(user.id)"
+              routerLink="/edit-product/{{user.id}}">Edit
+      </button>
+      <button type="button" class="ml-2 btn btn-danger" (click)="removeUser(user.id)">X</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+

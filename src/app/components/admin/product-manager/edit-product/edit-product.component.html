@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+
+    <div *ngIf="currentProduct" class="edit-form">
+      <div class="card">
+        <div class="card-header text-center">Edit Product
+          <div class="card-subtitle">Id: {{currentProduct.id}}</div>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="updateProduct()">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                [(ngModel)]="currentProduct.name"
+                name="name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea
+                rows="3"
+                class="form-control"
+                id="description"
+                [(ngModel)]="currentProduct.description"
+                name="description"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input
+                type="text"
+                class="form-control"
+                id="price"
+                [(ngModel)]="currentProduct.price"
+                name="price"
+              />
+            </div>
+            <div class="form-group">
+              <label for="quantity">Quantity</label>
+              <input
+                type="number"
+                class="form-control"
+                id="quantity"
+                [(ngModel)]="currentProduct.quantity"
+                name="quantity"
+              />
+            </div>
+
+          </form>
+
+          <button class="btn btn-primary btn-block"  type="submit" (click)="updateProduct()" routerLink="/product-manager">Update Product</button>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

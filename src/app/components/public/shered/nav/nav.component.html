@@ -1,0 +1,26 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">
+    <app-header></app-header>
+  </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" [routerLink]="['/shop']">Shop</a>
+    <a class="p-2 text-dark" [routerLink]="['/order-list']">Order List</a>
+
+      <a class="p-2 text-dark" [routerLink]="['/product-manager']" >Product Manager</a>
+      <a class="p-2 text-dark" [routerLink]="['/order-manager']">Order Manager</a>
+      <a class="p-2 text-dark" [routerLink]="['/user-manager']">User Manager</a>
+      <a class="p-2 text-dark" [routerLink]="['/cart-manager']">Cart Manager</a>
+
+  </nav>
+  <a class="btn btn-primary" [routerLink]="['/register']">Sign up</a>
+  <a class="ml-2 btn btn-outline-secondary" [routerLink]="['/login']">Login</a>
+  <a class="ml-2 btn btn-outline-danger" (click)="logout()">Logout</a>
+  <div class="cart-icon">
+    <i class="bi bi-cart ml-3"></i>
+    <div class="cart-value">
+      2
+    </div>
+  </div>
+
+
+</div>

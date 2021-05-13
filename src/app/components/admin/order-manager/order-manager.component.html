@@ -1,0 +1,25 @@
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Data</th>
+    <th scope="col">User</th>
+    <th scope="col">Price</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let order of orderTable">
+  <tr>
+    <th scope="row">{{order.id}}</th>
+    <td>{{order.createDateTime}}</td>
+    <td>{{order.user.username}}</td>
+    <td>{{order.grandTotalPrice | currency:"PLN "}}</td>
+    <td>
+      <button type="button" class="btn btn-primary">Order Details
+      </button>
+      <button type="button" class="ml-2 btn btn-danger" (click)="removeOrder(order.id)">X</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

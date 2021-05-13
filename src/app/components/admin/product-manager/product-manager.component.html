@@ -1,0 +1,32 @@
+<div class="btn btn-warning btn-block mb-3" routerLink="/add-product">Add Product</div>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Description</th>
+    <th scope="col">Price</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Actual In Stock</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let product of productTable">
+  <tr>
+    <th scope="row">{{product.id}}</th>
+    <td>{{product.name}}</td>
+    <td>{{product.description | slice: 0:100}}</td>
+    <td>{{product.price | currency:"PLN "}}</td>
+    <td>{{product.quantity}}</td>
+    <td>{{product.currentTotalUnitsInStock}}</td>
+    <td>
+      <button type="button" class="btn btn-primary" (click)="getProduct(product.id)"
+              routerLink="/edit-product/{{product.id}}">Edit
+      </button>
+      <button type="button" class="ml-2 btn btn-danger" (click)="removeProduct(product.id)">X</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
