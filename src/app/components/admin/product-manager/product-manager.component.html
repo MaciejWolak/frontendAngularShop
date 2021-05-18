@@ -6,7 +6,8 @@
     <th scope="col">Name</th>
     <th scope="col">Description</th>
     <th scope="col">Price</th>
-    <th scope="col">Quantity</th>
+    <th scope="col">Initial Quantity</th>
+    <th scope="col">Total Units In Order</th>
     <th scope="col">Actual In Stock</th>
     <th scope="col"></th>
   </tr>
@@ -18,6 +19,7 @@
     <td>{{product.description | slice: 0:100}}</td>
     <td>{{product.price | currency:"PLN "}}</td>
     <td>{{product.quantity}}</td>
+    <td>{{product.totalUnitsInOrder}}</td>
     <td>{{product.currentTotalUnitsInStock}}</td>
     <td>
       <button type="button" class="btn btn-primary" (click)="getProduct(product.id)"
@@ -28,5 +30,7 @@
   </tr>
   </tbody>
 </table>
+
+
 
 

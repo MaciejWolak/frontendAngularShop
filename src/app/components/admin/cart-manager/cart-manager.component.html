@@ -2,8 +2,8 @@
   <thead class="thead-dark">
   <tr>
     <th scope="col">Cart Id</th>
-    <th scope="col">Quantity</th>
     <th scope="col">Product Name</th>
+    <th scope="col">Quantity</th>
     <th scope="col">Price</th>
     <th scope="col">Total Price</th>
     <th scope="col">Order Id</th>
@@ -13,11 +13,11 @@
   <tbody *ngFor="let cart of cartTable">
   <tr>
     <th scope="row">{{cart.id}}</th>
-    <td>{{cart.quantity}}</td>
     <td>{{cart.product.name}}</td>
+    <td>{{cart.quantity}}</td>
     <td>{{cart.product.price | currency:"PLN "}}</td>
-    <td>{{cart.totalPrice}}</td>
-    <td>{{cart.order}}</td>
+    <td>{{cart.totalPrice  | currency:"PLN "}}</td>
+    <td>{{cart.order.id}}</td>
     <td>
       <button type="button" class="ml-2 btn btn-danger" (click)="removeCart(cart.id)">X</button>
     </td>

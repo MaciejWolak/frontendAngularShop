@@ -10,7 +10,7 @@ import {LoginService} from '../../../services/login.service';
 export class LoginComponent implements OnInit {
 
 
-  model: any = {username: 'Admin', password: '12345678'};
+  model: any = {};
 
   constructor(private loginService: LoginService,
               private router: Router) {
