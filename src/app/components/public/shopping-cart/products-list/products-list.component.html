@@ -1,5 +1,8 @@
+<div *ngIf="productList.length===0" class="alert alert-info">Product List is Empty.</div>
 <div class="row">
   <div class="col-md-4" *ngFor="let product of productList">
-    <app-product [product]="product"></app-product>
+    <app-product [product]="product">
+    </app-product>
   </div>
 </div>
+

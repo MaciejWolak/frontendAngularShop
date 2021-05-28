@@ -1,3 +1,4 @@
+<div class="container" id="main-container">
 <table class="table">
   <thead class="thead-dark">
   <tr>
@@ -19,8 +20,86 @@
     <td>{{cart.totalPrice  | currency:"PLN "}}</td>
     <td>{{cart.order.id}}</td>
     <td>
-      <button type="button" class="ml-2 btn btn-danger" (click)="removeCart(cart.id)">X</button>
+<!--      <button type="button" class="btn btn-primary" (click)="onOpenModal(cart, 'edit')">Edit
+      </button>-->
+      <button type="button" class="btn btn-primary" (click)="onOpenModal(cart, 'details')">Cart Details
+      </button>
+      <button type="button" class="ml-2 btn btn-danger" (click)="onOpenModal(cart, 'delete')">X</button>
     </td>
   </tr>
   </tbody>
 </table>
+<!--  &lt;!&ndash; Edit Modal &ndash;&gt;
+  <div class="modal fade" id="updateSongModal" tabindex="-1" role="dialog" aria-labelledby="songEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateSongModalLabel">Edit Cart:  {{editCart?.id}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+            <div class="form-group">
+              <label for="name">Quantity</label>
+              <input type="text" ngModel="{{editCart?.quantity}}" name="quantity" class="form-control" id="name"  placeholder="Name">
+              <label for="name">Description</label>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+              <button (click)="updateCart(editCart.id, editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>-->
+  <!-- Details Modal -->
+  <div class="modal fade" id="deleteSongModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel">Cart Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Username: {{detailsCart?.order.user.username}}</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteSongModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel">Delete Product</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete cart: {{deleteCart?.id}}?</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button (click)="removeCart(deleteCart?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Notification for no employees -->
+  <div *ngIf="cartTable?.length === null" class="col-lg-12 col-md-12 col-xl-12">
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">No Carts!</h4>
+      <p>No Carts were found.</p>
+    </div>
+  </div>
+</div>

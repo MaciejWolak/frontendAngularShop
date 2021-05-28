@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
 
   logout(): void {
     this.loginService.logout();
-    this.router.navigate(['login']);
+    this.router.navigate(['login']).then(r => console.log('r'));
   }
 
 }

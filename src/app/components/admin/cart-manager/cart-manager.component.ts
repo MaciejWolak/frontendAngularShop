@@ -9,13 +9,19 @@ import {CartService} from '../../../services/cart.service';
 })
 export class CartManagerComponent implements OnInit {
 
-  cartTable: Cart[] = [];
+  public cartTable: Cart[];
+  public deleteCart: Cart;
+  public editCart: Cart;
+  public detailsCart: Cart;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cartService.getCarts().subscribe((carts) => {
-      this.cartTable = carts;
+    this.getCarts();
+  }
+  getCarts(): void{
+    this.cartService.getCarts().subscribe((response: Cart[]) => {
+      this.cartTable = response;
     });
   }
 
@@ -31,6 +37,39 @@ export class CartManagerComponent implements OnInit {
     this.cartService.getCart(id).subscribe(cart => {
       console.log(cart);
     });
+  }
+
+  updateCart(id: number, cart: Cart): void {
+    this.cartService.updateCart(id, cart).subscribe(
+      (response: Cart) => {
+        console.log(response);
+        this.getCarts();
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  public onOpenModal(cart: Cart, mode: string): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+/*    if (mode === 'edit') {
+      this.editCart = cart;
+      button.setAttribute('data-target', '#updateSongModal');
+    }*/
+    if (mode === 'delete') {
+      this.deleteCart = cart;
+      button.setAttribute('data-target', '#deleteSongModal');
+    }
+    if (mode === 'details') {
+      this.detailsCart = cart;
+      button.setAttribute('data-target', '#deleteSongModal');
+    }
+    container.appendChild(button);
+    button.click();
   }
 
 }

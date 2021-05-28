@@ -58,10 +58,12 @@ export class CartsListComponent implements OnInit {
     });
   }
 
+
   showCarts(): void{
     console.log(this.carts);
   }
   addOrder(): void{
-    this.orderService.addOrder(this.user.id).subscribe(() => console.log('Done'));
+console.log(localStorage.getItem(String(this.user.id)));
+// this.orderService.addOrder(this.user.id).subscribe(() => console.log('Done'));
   }
 }

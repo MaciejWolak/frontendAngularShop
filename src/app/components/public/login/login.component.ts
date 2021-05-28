@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // tslint:disable-next-line:typedef
-  login() {
+
+  login(): void {
     this.loginService.login(this.model.username, this.model.password).subscribe(() => this.router.navigate(['/shop']),
       console.error);
   }

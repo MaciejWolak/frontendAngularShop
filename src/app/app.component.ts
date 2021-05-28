@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import {User} from './models/user';
+import {Router} from '@angular/router';
+
+class AuthenticationService {
+}
 
 @Component({
   selector: 'app-root',
@@ -7,4 +12,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Store';
+
+
 }

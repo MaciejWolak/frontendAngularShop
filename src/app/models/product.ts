@@ -8,6 +8,7 @@ export class Product {
   currentTotalUnitsInStock: number;
   totalUnitsInOrder: number;
 
+
   constructor(id: number, name: string, description: string,
               price: number, quantity: number,
               imageUrl: string, currentTotalUnitsInStock: number,
@@ -19,5 +20,6 @@ export class Product {
     this.imageUrl = imageUrl;
     this.currentTotalUnitsInStock = currentTotalUnitsInStock;
     this.totalUnitsInOrder = totalUnitsInOrder;
+
   }
 }

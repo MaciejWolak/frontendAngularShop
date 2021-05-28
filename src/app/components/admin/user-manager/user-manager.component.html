@@ -1,3 +1,5 @@
+<div class="container" id="main-container">
+  <div class="btn btn-warning btn-block mb-3" (click)="onOpenModal(null, 'add')">Add User</div>
 <table class="table">
   <thead class="thead-dark">
   <tr>
@@ -18,12 +20,109 @@
     <td>{{user.email}}</td>
     <td>{{user.authority}}</td>
     <td>
-      <button type="button" class="btn btn-primary" (click)="getUser(user.id)"
-              routerLink="/edit-product/{{user.id}}">Edit
+      <button type="button" class="btn btn-primary" (click)="onOpenModal(user, 'edit')">Edit
       </button>
-      <button type="button" class="ml-2 btn btn-danger" (click)="removeUser(user.id)" *ngIf="user.authority == 'USER'">X</button>
+      <button type="button" class="ml-2 btn btn-danger" (click)="onOpenModal(user, 'delete')" *ngIf="user.authority == 'USER'">X</button>
     </td>
   </tr>
   </tbody>
 </table>
+  <!-- Add Employee Modal -->
+  <div class="modal fade" id="addSongModal" tabindex="-1" role="dialog" aria-labelledby="addSongModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addSongModalLabel">Add Song</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="addProduct(addForm)">
+            <div class="form-group">
+              <label for="name">Username</label>
+              <input type="text" ngModel name="username" class="form-control" id="username" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+              <label for="description">Surname</label>
+              <input type="text" ngModel name="surname" class="form-control" id="surname" placeholder="Description" required>
+            </div>
+            <div class="form-group">
+              <label for="quantity">Email</label>
+              <input type="email" ngModel name="email" class="form-control" id="email" placeholder="Quantity" required>
+            </div>
+            <div class="form-group">
+              <label for="price">Password</label>
+              <input type="text" ngModel name="password" class="form-control" id="price" placeholder="Price" required>
+            </div>
+            <div class="form-group">
+              <label for="price">Authority</label>
+              <input type="text" ngModel name="authority" class="form-control" id="price" placeholder="Price" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="add-song-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Edit Modal -->
+  <div class="modal fade" id="updateSongModal" tabindex="-1" role="dialog" aria-labelledby="songEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateSongModalLabel">Edit Product:  {{editUser?.username}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+            <div class="form-group">
+              <label for="name">Username</label>
+              <input type="text" ngModel="{{editUser?.username}}" name="username" class="form-control" id="name"  placeholder="Name">
+              <label for="name">Surname</label>
+              <input type="text" ngModel="{{editUser?.surname}}" name="surname" class="form-control" id="description" aria-describedby="emailHelp" placeholder="Description">
+              <label for="name">Email</label>
+              <input type="text" ngModel="{{editUser?.email}}" name="email" class="form-control" id="quantity" placeholder="Quantity">
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+              <button (click)="updateUser(editUser.id, editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteSongModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel">Delete Product</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete product: {{deleteUser?.username}}?</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button (click)="removeUser(deleteUser?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Notification for no employees -->
+  <div *ngIf="userTable?.length === null" class="col-lg-12 col-md-12 col-xl-12">
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">No Users!</h4>
+      <p>No Users were found.</p>
+    </div>
+  </div>
+</div>
 
