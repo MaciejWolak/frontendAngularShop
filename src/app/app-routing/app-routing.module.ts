@@ -18,7 +18,7 @@ const  routes: Routes = [
   {path: 'user-manager', component: UserManagerComponent, canActivate: [AuthGuard]},
   {path: 'order-manager', component: OrderManagerComponent, canActivate: [AuthGuard]},
   {path: 'cart-manager', component: CartManagerComponent, canActivate: [AuthGuard]},
-  {path: 'shop', component: ShoppingCartComponent, canActivate: [AuthGuard]},
+  {path: 'shop', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: '**', component: PageNotFoundComponent}

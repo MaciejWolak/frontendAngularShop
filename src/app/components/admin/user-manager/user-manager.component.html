@@ -5,7 +5,6 @@
   <tr>
     <th scope="col">Id</th>
     <th scope="col">Username</th>
-    <th scope="col">Surname</th>
     <th scope="col">Email</th>
     <th scope="col">Authority</th>
 
@@ -16,7 +15,6 @@
   <tr>
     <th scope="row">{{user.id}}</th>
     <td>{{user.username}}</td>
-    <td>{{user.surname}}</td>
     <td>{{user.email}}</td>
     <td>{{user.authority}}</td>
     <td>
@@ -42,10 +40,6 @@
             <div class="form-group">
               <label for="name">Username</label>
               <input type="text" ngModel name="username" class="form-control" id="username" placeholder="Name" required>
-            </div>
-            <div class="form-group">
-              <label for="description">Surname</label>
-              <input type="text" ngModel name="surname" class="form-control" id="surname" placeholder="Description" required>
             </div>
             <div class="form-group">
               <label for="quantity">Email</label>
@@ -83,8 +77,6 @@
             <div class="form-group">
               <label for="name">Username</label>
               <input type="text" ngModel="{{editUser?.username}}" name="username" class="form-control" id="name"  placeholder="Name">
-              <label for="name">Surname</label>
-              <input type="text" ngModel="{{editUser?.surname}}" name="surname" class="form-control" id="description" aria-describedby="emailHelp" placeholder="Description">
               <label for="name">Email</label>
               <input type="text" ngModel="{{editUser?.email}}" name="email" class="form-control" id="quantity" placeholder="Quantity">
             </div>
