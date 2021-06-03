@@ -21,7 +21,7 @@ export class LoginService {
   }
   private headAuthToken(r: any): string{
     localStorage.setItem('authToken', r.authToken);
-    localStorage.setItem('Authority', r.authority);
+   // localStorage.setItem('Authority', r.authority);
     return r.authority;
   }
 

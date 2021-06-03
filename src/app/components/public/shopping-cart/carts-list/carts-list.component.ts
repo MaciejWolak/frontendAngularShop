@@ -65,7 +65,6 @@ export class CartsListComponent implements OnInit {
   addOrder(): void{
 //console.log(localStorage.getItem(String(this.user.id)));
 console.log(this.carts);
-console.log(this.msg);
 //this.orderService.addOrder(11).subscribe(() => console.log('Done'));
   }
 }

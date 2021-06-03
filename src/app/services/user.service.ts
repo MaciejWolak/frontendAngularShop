@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../models/user';
-import {userAuthUrl, usersUrl} from '../config/api';
+import {detailsUrl, userAuthUrl, usersUrl} from '../config/api';
 import {Observable} from 'rxjs';
 
 const HTTP_OPTIONS = {headers: new HttpHeaders({
@@ -41,5 +41,8 @@ export class UserService {
   getAuthTokenHeader(): object {
     const authToken = localStorage.getItem('authToken');
     return {headers: HTTP_OPTIONS.headers.append('Authorization', authToken)};
+  }
+  getDetails(): Observable<User> {
+    return this.http.get<User>(detailsUrl, this.getAuthTokenHeader());
   }
 }

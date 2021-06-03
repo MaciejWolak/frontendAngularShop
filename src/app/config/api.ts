@@ -16,3 +16,4 @@ export const userAuthUrl = baseUrl + '/api/users';
 export const productsAuthUrl = baseUrl + '/api/products';
 export const orderAuthUrl = baseUrl + '/api/shopOrders';
 export const cartAuthUrl = baseUrl + '/api/itemCarts';
+export const detailsUrl = baseUrl + '/details';
