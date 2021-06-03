@@ -56,17 +56,9 @@ export class CartManagerComponent implements OnInit {
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
-/*    if (mode === 'edit') {
-      this.editCart = cart;
-      button.setAttribute('data-target', '#updateSongModal');
-    }*/
     if (mode === 'delete') {
       this.deleteCart = cart;
-      button.setAttribute('data-target', '#deleteSongModal');
-    }
-    if (mode === 'details') {
-      this.detailsCart = cart;
-      button.setAttribute('data-target', '#deleteSongModal');
+      button.setAttribute('data-target', '#deleteCartModal');
     }
     container.appendChild(button);
     button.click();

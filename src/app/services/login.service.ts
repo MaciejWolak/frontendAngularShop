@@ -15,16 +15,14 @@ export class LoginService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  a: string;
 
   login(username: string, password: string): Observable<any>  {
     return this.http.post(loginUrl, {username, password}, this.httpOptions).pipe(tap(r => this.headAuthToken(r)));
   }
   private headAuthToken(r: any): string{
     localStorage.setItem('authToken', r.authToken);
-    const a = r.authority;
-    // localStorage.setItem('role', r.authority);
-    return this.a;
+    localStorage.setItem('Authority', r.authority);
+    return r.authority;
   }
 
   isAuthenticated(): boolean {

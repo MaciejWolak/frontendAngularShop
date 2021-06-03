@@ -70,15 +70,15 @@ export class UserManagerComponent implements OnInit {
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
     if (mode === 'add') {
-      button.setAttribute('data-target', '#addSongModal');
+      button.setAttribute('data-target', '#addUserModal');
     }
     if (mode === 'delete') {
       this.deleteUser = user;
-      button.setAttribute('data-target', '#deleteSongModal');
+      button.setAttribute('data-target', '#deleteUserModal');
     }
     if (mode === 'edit') {
       this.editUser = user;
-      button.setAttribute('data-target', '#updateSongModal');
+      button.setAttribute('data-target', '#updateUserModal');
     }
     container.appendChild(button);
     button.click();

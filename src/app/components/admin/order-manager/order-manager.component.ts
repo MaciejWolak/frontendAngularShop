@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {OrderService} from '../../../services/order.service';
 import {Order} from '../../../models/order';
-import {Product} from '../../../models/product';
 import {Cart} from '../../../models/cart';
+import {CartService} from '../../../services/cart.service';
 
 @Component({
   selector: 'app-order-manager',
@@ -12,15 +12,21 @@ import {Cart} from '../../../models/cart';
 export class OrderManagerComponent implements OnInit {
 
   @Input() cart: Cart;
-
+  public cartTable: Cart[];
   public orderTable: Order[];
   public deleteOrder: Order;
   public orderDetails: Order;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.getOrders();
+    this.getCarts();
+  }
+  getCarts(): void{
+    this.cartService.getCarts().subscribe((response: Cart[]) => {
+      this.cartTable = response;
+    });
   }
 
 
@@ -52,11 +58,11 @@ export class OrderManagerComponent implements OnInit {
     button.setAttribute('data-toggle', 'modal');
     if (mode === 'delete') {
       this.deleteOrder = order;
-      button.setAttribute('data-target', '#deleteSongModal');
+      button.setAttribute('data-target', '#deleteOrderModal');
     }
     if (mode === 'details') {
       this.orderDetails = order;
-      button.setAttribute('data-target', '#deleteSongModal');
+      button.setAttribute('data-target', '#detailsSongModal');
     }
     container.appendChild(button);
     button.click();

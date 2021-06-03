@@ -23,29 +23,8 @@
   </tr>
   </tbody>
 </table>
-  <!-- Details Modal -->
-  <div class="modal fade" id="deleteSongModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModelLabel">Order Details</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Username: {{orderDetails?.user.username}}</p>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <!-- Delete Modal -->
-  <div class="modal fade" id="deleteSongModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+  <div class="modal fade" id="deleteOrderModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -64,9 +43,47 @@
       </div>
     </div>
   </div>
+  <!-- Details Modal -->
+  <div class="modal fade" id="detailsSongModal" tabindex="-1" role="dialog" aria-labelledby="detailsModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailsModelLabel">Order Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Product Name</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+              <th scope="col">Total Price</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let cart of cartTable">
+            <tr>
+              <td>{{cart.order.id}}</td>
+              <td>{{cart.quantity}}</td>
+              <td>{{cart.product.price | currency:"PLN "}}</td>
+              <td>{{cart.totalPrice  | currency:"PLN "}}</td>
+            </tr>
+            </tbody>
 
+          </table>
+          <h3 class="float-lg-right" *ngFor="let order of orderTable">{{order.grandTotalPrice|currency:"PLN "}}</h3>
+          <div class="modal-footer p-3 float-left">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-  <!-- Notification for no employees -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification for no orders -->
   <div *ngIf="orderTable?.length === null" class="col-lg-12 col-md-12 col-xl-12">
     <div class="alert alert-info" role="alert">
       <h4 class="alert-heading">No Orders!</h4>

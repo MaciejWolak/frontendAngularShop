@@ -60,10 +60,12 @@ export class CartsListComponent implements OnInit {
 
 
   showCarts(): void{
-    console.log(this.carts);
+    console.log(this.cart);
   }
   addOrder(): void{
-console.log(localStorage.getItem(String(this.user.id)));
-// this.orderService.addOrder(this.user.id).subscribe(() => console.log('Done'));
+//console.log(localStorage.getItem(String(this.user.id)));
+console.log(this.carts);
+console.log(this.msg);
+//this.orderService.addOrder(11).subscribe(() => console.log('Done'));
   }
 }

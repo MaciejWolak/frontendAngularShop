@@ -13,14 +13,20 @@ export class NavComponent implements OnInit {
   constructor(private loginService: LoginService,
               private router: Router) { }
 
+  authority: string;
+
   ngOnInit(): void {
-    // @ts-ignore
+    this.authority = this.readLocalStorageValue('Authority');
 
   }
 
   logout(): void {
     this.loginService.logout();
     this.router.navigate(['login']).then(r => console.log('logout'));
+  }
+
+  readLocalStorageValue(key: string): string {
+    return localStorage.getItem(key);
   }
 
 }

@@ -21,8 +21,11 @@ export class LoginComponent implements OnInit {
 
 
   login(): void {
-    this.loginService.login(this.model.username, this.model.password).subscribe(() => this.router.navigate(['/shop']),
-      console.error);
+    this.loginService.login(this.model.username, this.model.password).subscribe(() => this.reload());
+  }
+
+  reload(): void{
+    this.router.navigate(['/shop']).then(r => location.reload());
   }
 
   logout(): void {

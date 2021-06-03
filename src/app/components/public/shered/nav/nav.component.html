@@ -5,10 +5,10 @@
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="p-2 text-dark" [routerLink]="['/shop']">Shop</a>
 
-      <a class="p-2 text-dark" [routerLink]="['/product-manager']" >Product Manager</a>
-      <a class="p-2 text-dark" [routerLink]="['/order-manager']">Order Manager</a>
-      <a class="p-2 text-dark" [routerLink]="['/user-manager']">User Manager</a>
-      <a class="p-2 text-dark" [routerLink]="['/cart-manager']">Cart Manager</a>
+      <a class="p-2 text-dark" [routerLink]="['/product-manager']" *ngIf="authority=='ADMIN'">Product Manager</a>
+      <a class="p-2 text-dark" [routerLink]="['/order-manager']" *ngIf="authority==='ADMIN'">Order Manager</a>
+      <a class="p-2 text-dark" [routerLink]="['/user-manager']" *ngIf="authority==='ADMIN'">User Manager</a>
+      <a class="p-2 text-dark" [routerLink]="['/cart-manager']" *ngIf="authority==='ADMIN'">Cart Manager</a>
 
   </nav>
   <a class="btn btn-primary" [routerLink]="['/register']">Sign up</a>

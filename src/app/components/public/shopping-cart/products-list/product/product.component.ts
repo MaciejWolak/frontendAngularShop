@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../../../../models/product';
 import {MessengerService} from '../../../../../services/messenger.service';
+import {User} from '../../../../../models/user';
 
 @Component({
   selector: 'app-product',

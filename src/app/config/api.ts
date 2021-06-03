@@ -12,4 +12,7 @@ export const ordersUrl = baseUrl + '/shopOrders';
 export const orderUrl = ordersUrl + '/:id';
 export const cartsUrl = baseUrl + '/itemCarts';
 export const cartUrl = cartsUrl + '/:id';
-
+export const userAuthUrl = baseUrl + '/api/users';
+export const productsAuthUrl = baseUrl + '/api/products';
+export const orderAuthUrl = baseUrl + '/api/shopOrders';
+export const cartAuthUrl = baseUrl + '/api/itemCarts';

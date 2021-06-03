@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {productsUrl} from '../config/api';
+import {productsAuthUrl, productsUrl} from '../config/api';
 import {Product} from '../models/product';
 import {Observable} from 'rxjs';
 
@@ -21,24 +21,24 @@ export class ProductService {
 
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(productsUrl, this.getAuthTokenHeader());
+    return this.http.get<Product[]>(productsUrl);
   }
 
   addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(productsUrl, product, this.getAuthTokenHeader());
+    return this.http.post<Product>(productsAuthUrl, product, this.getAuthTokenHeader());
   }
 
 
   removeProduct(id: number): Observable<void> {
-    return this.http.delete<void>(productsUrl + '/' + id);
+    return this.http.delete<void>(productsAuthUrl + '/' + id, this.getAuthTokenHeader());
   }
 
   getProduct(id: number): Observable<Product> {
-    return this.http.get<Product>(productsUrl + '/' + id, this.getAuthTokenHeader());
+    return this.http.get<Product>(productsUrl + '/' + id);
   }
 
   updateProduct(id: number, product: Product): Observable<Product> {
-    return this.http.put<Product>(productsUrl + '/' + id, product);
+    return this.http.put<Product>(productsAuthUrl + '/' + id, product, this.getAuthTokenHeader());
   }
   getAuthTokenHeader(): object {
     const authToken = localStorage.getItem('authToken');
