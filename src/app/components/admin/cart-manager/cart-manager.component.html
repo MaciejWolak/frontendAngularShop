@@ -8,7 +8,6 @@
     <th scope="col">Price</th>
     <th scope="col">Total Price</th>
     <th scope="col">Order Id</th>
-    <th scope="col">Username</th>
     <th></th>
   </tr>
   </thead>
@@ -18,9 +17,9 @@
     <td>{{cart.product.name}}</td>
     <td>{{cart.quantity}}</td>
     <td>{{cart.product.price | currency:"PLN "}}</td>
-    <td>{{cart.totalPrice  | currency:"PLN "}}</td>
-    <td>{{cart.order.id}}</td>
-    <td>{{cart.order.user.username}}</td>
+    <td>{{cart.quantity * cart.product.price | currency:"PLN "}}</td>
+    <td>?</td>
+
     <td>
       <button type="button" class="ml-2 btn btn-danger" (click)="onOpenModal(cart, 'delete')">X</button>
     </td>

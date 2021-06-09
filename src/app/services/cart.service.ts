@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {cartAuthUrl, cartsUrl} from '../config/api';
 import {Cart} from '../models/cart';
+
 const HTTP_OPTIONS = {headers: new HttpHeaders({
     'Content-Type': 'application/json'
   })};
@@ -19,7 +20,7 @@ export class CartService {
   };
 
   getCarts(): Observable<Cart[]> {
-    return this.http.get<Cart[]>(cartsUrl);
+    return this.http.get<Cart[]>(cartsUrl, this.getAuthTokenHeader());
   }
 
   addCart(cart: Cart): Observable<Cart> {
@@ -32,7 +33,7 @@ export class CartService {
   }
 
   getCart(id: number): Observable<Cart> {
-    return this.http.get<Cart>(cartsUrl + '/' + id);
+    return this.http.get<Cart>(cartsUrl + '/' + id, this.getAuthTokenHeader());
   }
 
   updateCart(id: number, cart: Cart): Observable<Cart> {

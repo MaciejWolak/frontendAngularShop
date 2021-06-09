@@ -9,16 +9,16 @@
     <th></th>
   </tr>
   </thead>
-  <tbody *ngFor="let order of orderTable">
+  <tbody *ngFor="let orders of orderTable">
   <tr>
-    <th scope="row">{{order.id}}</th>
-    <td>{{order.createDateTime}}</td>
-    <td>{{order.user.username}}</td>
-    <td>{{order.grandTotalPrice | currency:"PLN "}}</td>
+    <th scope="row">{{orders.id}}</th>
+    <td>{{orders.createDateTime}}</td>
+    <td>{{orders.user.username}}</td>
+    <td>{{orders.cart.price * orders.cart.quantity | currency:"PLN "}}</td>
     <td>
-      <button type="button" class="btn btn-primary" (click)="onOpenModal(order, 'details')">Order Details
+      <button type="button" class="btn btn-primary" (click)="onOpenModal(orders, 'details')">Order Details
       </button>
-      <button type="button" class="ml-2 btn btn-danger" (click)="onOpenModal(order, 'delete')">X</button>
+      <button type="button" class="ml-2 btn btn-danger" (click)="onOpenModal(orders, 'delete')">X</button>
     </td>
   </tr>
   </tbody>
@@ -63,9 +63,9 @@
               <th scope="col">Total Price</th>
             </tr>
             </thead>
-            <tbody *ngFor="let cart of cartTable">
-            <tr>
-              <td>{{cart.order.id}}</td>
+            <tbody >
+            <tr *ngFor="let order of orderTable">
+              <td>{{order.cart.product.name}}</td>
               <td>{{cart.quantity}}</td>
               <td>{{cart.product.price | currency:"PLN "}}</td>
               <td>{{cart.totalPrice  | currency:"PLN "}}</td>

@@ -20,7 +20,7 @@ export class OrderService {
   };
 
   getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(ordersUrl);
+    return this.http.get<Order[]>(ordersUrl, this.getAuthTokenHeader());
   }
 
   addOrder(order: number): Observable<Order> {
@@ -33,7 +33,7 @@ export class OrderService {
   }
 
   getOrder(id: number): Observable<Order> {
-    return this.http.get<Order>(ordersUrl + '/' + id);
+    return this.http.get<Order>(ordersUrl + '/' + id, this.getAuthTokenHeader());
   }
 
   updateOrder(id: number, order: Order): Observable<Order> {

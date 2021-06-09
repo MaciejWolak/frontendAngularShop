@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Cart} from '../../../models/cart';
 import {CartService} from '../../../services/cart.service';
+import {Order} from '../../../models/order';
 
 @Component({
   selector: 'app-cart-manager',
@@ -13,6 +14,8 @@ export class CartManagerComponent implements OnInit {
   public deleteCart: Cart;
   public editCart: Cart;
   public detailsCart: Cart;
+
+  @Input() order: Order;
 
   constructor(private cartService: CartService) { }
 

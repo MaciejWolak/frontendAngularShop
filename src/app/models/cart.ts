@@ -18,7 +18,7 @@ export class Cart {
     this.productId = product.id;
     this.productName = product.name;
     this.price = product.price;
-    this.totalPrice = totalPrice;
+    this.totalPrice = quantity * product.price;
     this.id = order.id;
   }
 
