@@ -1,5 +1,5 @@
 <div *ngIf="carts.length===0" class="alert alert-info">Your CartItem is Empty.</div>
-<ul *ngIf="carts.length>0" class="list-group">
+<ul *ngIf="carts.length>0" class="list-group card-title text-center bg-warning py-2 font-weight-bold">Shopping Cart
   <li class="list-group-item" *ngFor="let item of carts">
     <app-cart [cart]="item"></app-cart>
   </li>

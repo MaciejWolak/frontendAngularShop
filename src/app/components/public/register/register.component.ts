@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RegisterService} from '../../../services/register.service';
 import {Router} from '@angular/router';
+import {UserService} from '../../../services/user.service';
 
 // tslint:disable-next-line:typedef
 function passwordMatchValidator(form) {
@@ -33,7 +34,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private builder: FormBuilder,
               private registerService: RegisterService,
-              private router: Router) { }
+              private router: Router,
+              private userService: UserService) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -42,9 +44,8 @@ export class RegisterComponent implements OnInit {
   // tslint:disable-next-line:typedef
   buildForm() {
     this.registerForm = this.builder.group({
-      email: ['', [Validators.required, Validators.email]],
+      // email: ['', [Validators.required, Validators.email]],
       username: ['', Validators.required],
-      surname: ['', Validators.required],
       password: ['', [Validators.required, symbolValidator, Validators.minLength(8)]],
       confirmPassword: ''
     }, {
