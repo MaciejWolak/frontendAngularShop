@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
   // tslint:disable-next-line:typedef
   buildForm() {
     this.registerForm = this.builder.group({
-      // email: ['', [Validators.required, Validators.email]],
+       email: ['', [Validators.required, Validators.email]],
       username: ['', Validators.required],
       password: ['', [Validators.required, symbolValidator, Validators.minLength(8)]],
       confirmPassword: ''
