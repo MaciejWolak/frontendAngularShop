@@ -23,7 +23,7 @@ export class CartService {
     return this.http.get<Cart[]>(cartsUrl, this.getAuthTokenHeader());
   }
 
-  addCart(cart: Cart): Observable<Cart> {
+  addCart(cart: { this: undefined }): Observable<Cart> {
     return this.http.post<Cart>(cartsUrl, cart, this.getAuthTokenHeader());
   }
 

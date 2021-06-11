@@ -20,6 +20,8 @@ import {UserManagerComponent} from './components/admin/user-manager/user-manager
 import {RegisterComponent} from './components/public/register/register.component';
 import {OrderManagerComponent} from './components/admin/order-manager/order-manager.component';
 import { CartManagerComponent } from './components/admin/cart-manager/cart-manager.component';
+import { OrderComponent } from './components/admin/order-manager/order/order.component';
+import { OrderDetailsComponent } from './components/admin/order-manager/order/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { CartManagerComponent } from './components/admin/cart-manager/cart-manag
     UserManagerComponent,
     RegisterComponent,
     OrderManagerComponent,
-    CartManagerComponent
+    CartManagerComponent,
+    OrderComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,

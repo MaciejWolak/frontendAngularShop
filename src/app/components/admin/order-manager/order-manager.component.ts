@@ -11,9 +11,11 @@ import {CartService} from '../../../services/cart.service';
 })
 export class OrderManagerComponent implements OnInit {
 
+  @Input() order: Order;
+
   @Input() cart: Cart;
   public cartTable: Cart[];
-  public orderTable: Order[];
+  public orderTable: Order[] = [];
   public deleteOrder: Order;
   public orderDetails: Order;
 

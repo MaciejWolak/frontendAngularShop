@@ -1,93 +1,11 @@
 <div class="container" id="main-container">
-<table class="table">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col">Id</th>
-    <th scope="col">Data</th>
-    <th scope="col">User</th>
-    <th scope="col">Price</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody *ngFor="let orders of orderTable">
-  <tr>
-    <th scope="row">{{orders.id}}</th>
-    <td>{{orders.createDateTime}}</td>
-    <td>{{orders.user.username}}</td>
-    <td>{{orders.cart.price * orders.cart.quantity | currency:"PLN "}}</td>
-    <td>
-      <button type="button" class="btn btn-primary" (click)="onOpenModal(orders, 'details')">Order Details
-      </button>
-      <button type="button" class="ml-2 btn btn-danger" (click)="onOpenModal(orders, 'delete')">X</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
-  <!-- Delete Modal -->
-  <div class="modal fade" id="deleteOrderModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModelLabel">Delete Order</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure you want to delete order: {{deleteOrder?.id}}?</p>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            <button (click)="removeOrder(deleteOrder?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Details Modal -->
-  <div class="modal fade" id="detailsSongModal" tabindex="-1" role="dialog" aria-labelledby="detailsModelLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="detailsModelLabel">Order Details</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <table class="table table-striped">
-            <thead>
-            <tr>
-              <th scope="col">Product Name</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Price</th>
-              <th scope="col">Total Price</th>
-            </tr>
-            </thead>
-            <tbody >
-            <tr *ngFor="let order of orderTable">
-              <td>{{order.cart.product.name}}</td>
-              <td>{{cart.quantity}}</td>
-              <td>{{cart.product.price | currency:"PLN "}}</td>
-              <td>{{cart.totalPrice  | currency:"PLN "}}</td>
-            </tr>
-            </tbody>
+  <div class="col-10 p2">
+    <div *ngFor="let order of orderTable" class="card m-1 p-1 bg-light">
+      <app-order [order] = "order">
 
-          </table>
-          <h3 class="float-lg-right" *ngFor="let order of orderTable">{{order.grandTotalPrice|currency:"PLN "}}</h3>
-          <div class="modal-footer p-3 float-left">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-          </div>
-        </div>
-      </div>
+      </app-order>
     </div>
+
   </div>
 
-  <!-- Notification for no orders -->
-  <div *ngIf="orderTable?.length === null" class="col-lg-12 col-md-12 col-xl-12">
-    <div class="alert alert-info" role="alert">
-      <h4 class="alert-heading">No Orders!</h4>
-      <p>No Orders were found.</p>
-    </div>
-  </div>
 </div>

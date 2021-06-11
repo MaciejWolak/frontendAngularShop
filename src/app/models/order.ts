@@ -6,15 +6,16 @@ export class Order {
   user: User;
   grandTotalPrice: number;
   createDateTime: string;
-  cart: Cart;
+  cart: Cart[];
+  userId: number;
+  productId: number;
+  quantity: number;
 
 
 
   constructor(id: number, user: User, grandTotalPrice: number, createDateTime: string, cart: Cart) {
-    this.id = id;
-    this.user = user;
-    this.grandTotalPrice = grandTotalPrice;
-    this.createDateTime = createDateTime;
-    this.cart =  cart;
+    this.userId = user.id;
+    this.productId = cart.product.id;
+    this.quantity = cart.quantity;
   }
 }

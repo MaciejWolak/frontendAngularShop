@@ -6,6 +6,7 @@ import {Cart} from '../../../../models/cart';
 import {OrderService} from '../../../../services/order.service';
 import {UserService} from '../../../../services/user.service';
 import {CartService} from '../../../../services/cart.service';
+import {Order} from '../../../../models/order';
 
 @Component({
   selector: 'app-carts-list',
@@ -17,9 +18,10 @@ export class CartsListComponent implements OnInit {
   @Input() cart: Cart;
   @Input() user: User;
 
-  cart1: Cart;
+  cart1: Order;
 
   carts = [];
+
 
   cartTotal = 0;
 
@@ -41,11 +43,10 @@ export class CartsListComponent implements OnInit {
     this.getDetails();
     console.log(this.currentUser);
 
-/*
-    this.cart1.order.user.id = this.currentUser;
-    this.cart1.product.id = 35;
-    this.cart1.quantity = 5;
-    console.log(this.currentUser);*/
+
+    this.cart1.userId = this.currentUser;
+    this.cart1.productId = 5;
+    this.cart1.quantity = 1;
   }
 
   // tslint:disable-next-line:typedef
@@ -74,6 +75,8 @@ export class CartsListComponent implements OnInit {
     this.cartTotal = 0;
     this.carts.forEach(item => {
       this.cartTotal += (item.quantity * item.price);
+
+
     });
   }
 
@@ -84,11 +87,10 @@ export class CartsListComponent implements OnInit {
     console.log(this.cart);
   }
   addOrder(): void{
-//this.cartService.addCart(this.carts, this.currentUser).subscribe();
+    console.log(this.carts);
+// @ts-ignore
+   this.orderService.addOrder(this.carts).subscribe();
 //console.log(localStorage.getItem(String(this.user.id)));
-console.log(this.carts);
-console.log(this.currentUser);
-window.alert('ok');
 //this.orderService.addOrder(11).subscribe(() => console.log('Done'));
   }
 
