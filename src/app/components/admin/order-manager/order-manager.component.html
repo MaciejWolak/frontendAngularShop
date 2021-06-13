@@ -1,11 +1,12 @@
-<div class="container" id="main-container">
-  <div class="col-10 p2">
-    <div *ngFor="let order of orderTable" class="card m-1 p-1 bg-light">
-      <app-order [order] = "order">
+<div class="col-10 p2">
+  <div *ngFor="let order of orderTable" class="card m-1 p-1 bg-light">
+    <app-order [order]="order">
 
-      </app-order>
-    </div>
 
+
+    </app-order>
   </div>
 
+
 </div>
+
