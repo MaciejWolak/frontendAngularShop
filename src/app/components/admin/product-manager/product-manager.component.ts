@@ -39,6 +39,7 @@ export class ProductManagerComponent implements OnInit {
     });
     console.log('ok');
     this.productTable = this.productTable.filter(product => product.id !== id);
+    location.reload();
   }
 
   addProduct(addForm: NgForm): void {

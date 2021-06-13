@@ -34,6 +34,7 @@ export class CartManagerComponent implements OnInit {
     });
     console.log('ok');
     this.cartTable = this.cartTable.filter(cart => cart.id !== id);
+    location.reload();
   }
 
   getCart(id: number): void {
