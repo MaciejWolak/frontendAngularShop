@@ -13,7 +13,6 @@ export class Order {
   quantity: number;
 
 
-
   constructor(id: number, user: User, grandTotalPrice: number, createDateTime: string, itemCart: Cart) {
     this.userId = user.id;
     this.productId = itemCart.product.id;

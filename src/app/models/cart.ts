@@ -1,11 +1,13 @@
 import {Product} from './product';
 import {Order} from './order';
+import {Basket} from './basket';
 
 export class Cart {
   id: number;
   productName: string;
   productId: number;
   quantity: number;
+  price: number;
   product: Product;
   totalPrice: number;
 
@@ -17,6 +19,5 @@ export class Cart {
     this.productId = product.id;
     this.productName = product.name;
   }
-
 
 }

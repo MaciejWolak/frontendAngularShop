@@ -6,7 +6,7 @@ import {Cart} from '../../../../models/cart';
 import {OrderService} from '../../../../services/order.service';
 import {UserService} from '../../../../services/user.service';
 import {CartService} from '../../../../services/cart.service';
-import {Order} from '../../../../models/order';
+import {Basket} from '../../../../models/basket';
 
 @Component({
   selector: 'app-carts-list',
@@ -18,9 +18,18 @@ export class CartsListComponent implements OnInit {
   @Input() cart: Cart;
   @Input() user: User;
 
-  cart1: Order;
+  carts  = [];
+  itemCarts = [];
 
-  carts = [];
+
+
+
+  thisCarts = this.carts;
+  request = {
+    itemCarts : this.thisCarts
+  };
+
+
 
 
   cartTotal = 0;
@@ -28,6 +37,10 @@ export class CartsListComponent implements OnInit {
   currentUser: number;
 
   num: number;
+
+/*  private val: any = {
+    "itemCarts": []
+  };*/
 
   constructor(private msg: MessengerService,
               private orderService: OrderService,
@@ -40,13 +53,13 @@ export class CartsListComponent implements OnInit {
       this.addProductToCart(product);
       console.log(product.quantity);
     });
-    this.getDetails();
+/*    this.getDetails();
     console.log(this.currentUser);
 
 
     this.cart1.userId = this.currentUser;
     this.cart1.productId = 5;
-    this.cart1.quantity = 1;
+    this.cart1.quantity = 1;*/
   }
 
   // tslint:disable-next-line:typedef
@@ -64,6 +77,7 @@ export class CartsListComponent implements OnInit {
 
     if (!productExists) {
       this.carts.push({
+        id: 0, product: undefined, totalPrice: 0,
         productId: product.id,
         productName: product.name,
         quantity: 1,
@@ -81,15 +95,37 @@ export class CartsListComponent implements OnInit {
   }
 
 
-
+/*  onAddedToCart = (item) => {
+    this.val.itemCarts.push({
+      "quantity": item.quantity,
+      "product": {
+        "id": item.id
+      }
+    });
+  }*/
 
   showCarts(): void{
     console.log(this.cart);
   }
   addOrder(): void{
-    console.log(this.carts);
+
+    this.request = {
+      itemCarts: this.carts.map(({ quantity, productId }) => ({
+        quantity,
+        product: {
+          id: productId
+        }
+      }))
+    };
+
+    //this.onAddedToCart(this.val);
+    // @ts-ignore
+   // this.order.order.productId = this.carts.push({productId});
+    // @ts-ignore
+  //  this.order.itemCarts = this.carts;
+    console.log(this.request);
 // @ts-ignore
-    this.orderService.addOrder(this.carts).subscribe();
+  this.orderService.addOrder(this.request).subscribe();
 //console.log(localStorage.getItem(String(this.user.id)));
 //this.orderService.addOrder(11).subscribe(() => console.log('Done'));
   }
