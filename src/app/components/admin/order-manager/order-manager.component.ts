@@ -11,7 +11,7 @@ export class OrderManagerComponent implements OnInit {
 
 
   public orderTable: Order[] = [];
-
+grandTotal: number;
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
@@ -22,8 +22,11 @@ export class OrderManagerComponent implements OnInit {
     this.orderService.getOrders().subscribe((response: Order[]) => {
       this.orderTable = response;
       console.log(this.orderTable);
+      this.grandTotal = 0;
+      this.orderTable.forEach(item => {
+        this.grandTotal += (item.cart.product.price * item.quantity);
     });
+  });
+
   }
-
-
 }

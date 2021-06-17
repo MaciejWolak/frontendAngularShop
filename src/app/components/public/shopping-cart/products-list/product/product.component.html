@@ -20,7 +20,7 @@
 
     <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">
-        <button [disabled]="product.currentTotalUnitsInStock==0" type="button" class="btn btn-sm btn-primary product-btn" (click)="addProductToCart()">Add to cart
+        <button [disabled]="product.currentTotalUnitsInStock<=0" type="button" class="btn btn-sm btn-primary product-btn" (click)="addProductToCart()">Add to cart
         </button>
        <!-- <button type="button" class="btn btn-sm btn-outline-secondary product-btn">View details</button>-->
       </div>

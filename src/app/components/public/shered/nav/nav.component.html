@@ -2,11 +2,14 @@
   <h5 class="my-0 mr-md-auto font-weight-normal">
     <app-header></app-header>
   </h5>
+
   <nav class="my-2 my-md-0 mr-md-3">
+    <span *ngIf="authority==='ADMIN'" class="badge badge-pill badge-info">Admin</span>
+    <span *ngIf="authority==='USER'" class="badge badge-pill badge-info">User</span>
     <a class="p-2 text-dark" [routerLink]="['/shop']">Shop</a>
 
       <a class="p-2 text-dark" [routerLink]="['/product-manager']" *ngIf="authority==='ADMIN'">Product Manager</a>
-      <a class="p-2 text-dark" [routerLink]="['/order-manager']">Order Manager</a>
+      <a class="p-2 text-dark" [routerLink]="['/order-manager']">Orders List</a>
       <a class="p-2 text-dark" [routerLink]="['/user-manager']" *ngIf="authority==='ADMIN'">User Manager</a>
       <a class="p-2 text-dark" [routerLink]="['/cart-manager']" *ngIf="authority==='ADMIN'">Cart Manager</a>
 
