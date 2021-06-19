@@ -9,13 +9,16 @@ import {UserService} from '../../../../../services/user.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-@Input() product: Product;
 
+  @Input() product: Product;
   @Input() cart: Cart;
 
 
+  public removeOne(): void{
+    this.cart.quantity = this.cart.quantity - 1;
+  }
 
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

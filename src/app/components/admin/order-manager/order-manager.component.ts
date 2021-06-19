@@ -24,7 +24,7 @@ grandTotal: number;
       console.log(this.orderTable);
       this.grandTotal = 0;
       this.orderTable.forEach(item => {
-        this.grandTotal += (item.cart.product.price * item.quantity);
+        this.grandTotal += (item.quantity * item.cart.quantity);
     });
   });
 

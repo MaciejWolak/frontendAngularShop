@@ -1,15 +1,12 @@
 <div class="col-10 p2">
   <div *ngFor="let order of orderTable" class="card m-1 p-1 bg-light">
     <app-order [order]="order">
-
-
-
     </app-order>
   </div>
   <!-- Notification for no orders -->
   <div *ngIf="orderTable.length===0" class="col-lg-12 col-md-12 col-xl-12">
     <div class="alert alert-info" role="alert">
-      <h4 class="alert-heading">No Carts!</h4>
+      <h4 class="alert-heading">No Orders!</h4>
       <p>No Orders were found.</p>
     </div>
   </div>

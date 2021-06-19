@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../../../../models/product';
 import {MessengerService} from '../../../../../services/messenger.service';
-import {User} from '../../../../../models/user';
+import {Cart} from '../../../../../models/cart';
 
 @Component({
   selector: 'app-product',
@@ -11,6 +11,7 @@ import {User} from '../../../../../models/user';
 export class ProductComponent implements OnInit {
 
   @Input() product: Product;
+  @Input() cart: Cart;
 
   constructor(private msg: MessengerService) { }
 
@@ -19,5 +20,10 @@ export class ProductComponent implements OnInit {
 
   addProductToCart(): void {
     this.msg.sendMessage(this.product);
+    this.product.currentTotalUnitsInStock = this.product.currentTotalUnitsInStock - 1;
+  }
+  removeProductFromCart(): void {
+    this.cart.quantity = this.cart.quantity - 1;
+    this.product.currentTotalUnitsInStock = this.product.currentTotalUnitsInStock + 1;
   }
 }

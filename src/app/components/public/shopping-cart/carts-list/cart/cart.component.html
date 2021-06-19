@@ -1,7 +1,14 @@
-<div class="cart text-right">
+<div class="cart text-right" *ngIf="cart.quantity > 0 ">
   <strong>{{cart.productName}}</strong>
   <span> Id: {{ cart.productId}}</span> x
   <span>{{ cart.quantity }}</span>:
-  <strong>{{ (cart.quantity * cart.price) | currency:'PLN ' }}</strong>
+
+    <button class="btn btn-danger" (click)="removeOne()">-
+    </button>
+
+<span>
+  <strong *ngIf="(cart.quantity*cart.price) > 0">{{ (cart.quantity * cart.price) | currency:'PLN ' }}</strong>
+</span>
+
 </div>
 
