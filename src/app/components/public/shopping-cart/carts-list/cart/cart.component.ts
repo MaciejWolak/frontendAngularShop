@@ -16,6 +16,9 @@ export class CartComponent implements OnInit {
 
   public removeOne(): void{
     this.cart.quantity = this.cart.quantity - 1;
+    if (this.cart.quantity === 0){
+      this.cart == null;
+    }
   }
 
   constructor() { }
