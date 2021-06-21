@@ -6,7 +6,7 @@
 * [Technologies](#technologies)
 * [Clone](#clone)
 * [Development server](#development-server)
-* [Clone](#clone)
+
 
 ## General info
 Simple web shop with user registration and managemet options.
@@ -23,7 +23,10 @@ How to run it locally:
 ```bash
 $ git clone https://github.com/WolakMaciej/webshopfront.git
 ```
-
+Run npm install inside the downloaded/cloned folder:
+```bash
+$ npm install
+```
 ## Development server
 
 * This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
