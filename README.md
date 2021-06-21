@@ -1,5 +1,4 @@
 # webshop
-https://github.com/WolakMaciej/webshopfront.git
 
 
 ## Table of contents
