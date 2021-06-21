@@ -46,7 +46,7 @@
           <form #addForm="ngForm" (ngSubmit)="addProduct(addForm)">
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Car" required>
+              <input type="text" ngModel name="name" class="form-control" placeholder="Car" required>
             </div>
             <div class="form-group">
               <label for="description">Description</label>
@@ -54,15 +54,15 @@
             </div>
             <div class="form-group">
               <label for="quantity">Quantity</label>
-              <input type="number" ngModel name="quantity" class="form-control" id="quantity" placeholder="1" required>
+              <input type="number" ngModel name="quantity" class="form-control"  placeholder="1" required>
             </div>
             <div class="form-group">
               <label for="price">Price</label>
-              <input type="number" ngModel name="price" class="form-control" id="price" placeholder="10000" required>
+              <input type="number" ngModel name="price" class="form-control"  placeholder="10000" required>
             </div>
             <div class="form-group">
               <label for="imageUrl">Image</label>
-              <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Url image" required>
+              <input type="text" ngModel name="imageUrl" class="form-control" placeholder="Url image" required>
             </div>
             <div class="modal-footer">
               <button type="button" id="add-song-form" class="btn btn-secondary" data-dismiss="modal">Close</button>

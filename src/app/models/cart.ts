@@ -1,6 +1,4 @@
 import {Product} from './product';
-import {Order} from './order';
-import {Basket} from './basket';
 
 export class Cart {
   id: number;

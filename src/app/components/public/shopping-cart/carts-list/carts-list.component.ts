@@ -20,12 +20,12 @@ export class CartsListComponent implements OnInit {
   authority: string;
 
 
-  carts  = [];
+  carts = [];
   itemCarts = [];
 
   thisCarts = this.carts;
   request = {
-    itemCarts : this.thisCarts
+    itemCarts: this.thisCarts
   };
 
 
@@ -82,14 +82,14 @@ export class CartsListComponent implements OnInit {
   }
 
 
-
-  showCarts(): void{
+  showCarts(): void {
     console.log(this.cart);
   }
-  addOrder(): void{
+
+  addOrder(): void {
 
     this.request = {
-      itemCarts: this.carts.map(({ quantity, productId }) => ({
+      itemCarts: this.carts.map(({quantity, productId}) => ({
         quantity,
         product: {
           id: productId
@@ -110,7 +110,6 @@ export class CartsListComponent implements OnInit {
       this.authority = user.authority.toString();
     });
   }
-
 
 
 }

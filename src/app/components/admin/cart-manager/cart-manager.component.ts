@@ -13,8 +13,6 @@ export class CartManagerComponent implements OnInit {
   public cartTable: Cart[];
   public deleteCart: Cart;
   public editCart: Cart;
-  public detailsCart: Cart;
-
   @Input() order: Order;
 
   constructor(private cartService: CartService) { }
@@ -37,11 +35,6 @@ export class CartManagerComponent implements OnInit {
     location.reload();
   }
 
-  getCart(id: number): void {
-    this.cartService.getCart(id).subscribe(cart => {
-      console.log(cart);
-    });
-  }
 
   updateCart(id: number, cart: Cart): void {
     this.cartService.updateCart(id, cart).subscribe(

@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Cart} from '../../../../../models/cart';
 import {Product} from '../../../../../models/product';
-import {UserService} from '../../../../../services/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,14 +13,13 @@ export class CartComponent implements OnInit {
   @Input() cart: Cart;
 
 
-  public removeOne(): void{
-    this.cart.quantity = this.cart.quantity - 1;
-    if (this.cart.quantity === 0){
-      this.cart == null;
-    }
+  public removeOne(): void {
+    this.cart.quantity -= 1;
+    this.product.currentTotalUnitsInStock += 1;
   }
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
