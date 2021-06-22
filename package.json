@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "heroku-postbuild": "ng build --prod && npm install -g http-server-spa"
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start": "http-server-spa dist/angular-reddit-clone index.html $PORT"
   },
   "private": true,
   "dependencies": {
