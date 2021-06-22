@@ -1,0 +1,62 @@
+<div class="container" id="main-container">
+  <h4>Order ID: {{order.id}}
+    <span class="badge badge-pill badge-warning float-right">{{order.user.username}}</span>
+  </h4>
+  <div class="card-text bg-white p-1">
+    {{order.createDateTime | date:'medium' }}
+    <button *ngIf="authority==='ADMIN'" type="button" class="mr-2 btn btn-danger float-right" (click)="onOpenModal(order, 'delete')">X</button>
+  </div>
+  <div class="font-weight-bold">{{order.user.username}}</div>
+  <table class="table table-sm table-bordered table-hover">
+    <tr>
+      <th>Cart ID</th>
+      <th>Product Name</th>
+      <th>Product Price</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+    </tr>
+    <tr *ngFor="let item of order.itemCarts">
+      <td>{{item.id}}</td>
+      <td>{{item.product.name}}</td>
+      <td>{{item.product.price | currency: "PLN "}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.product.price*item.quantity | currency: "PLN "}}</td>
+    </tr>
+    <tr>
+      <td colspan="3" class="border-0"></td>
+      <th class="text-center" scope="row" >TOTAL</th>
+      <td class="text-left">{{order.grandTotalPrice}}</td>
+    </tr>
+  </table>
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteOrderModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel">Delete Order</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete order: {{order.id}}?</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button (click)="removeOrder(order?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification for no orders -->
+  <div *ngIf="order.id === 0" class="col-lg-12 col-md-12 col-xl-12">
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">No Carts!</h4>
+      <p>No Orders were found.</p>
+    </div>
+  </div>
+
+
+</div>
