@@ -1,6 +1,7 @@
-import { environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 
-export const baseUrl = environment.production ? 'http://localhost:8080' : 'https://shop3heroku.herokuapp.com';
+
+export const baseUrl = environment.baseUrl;
 export const productsUrl = baseUrl + '/products';
 export const productUrl = productsUrl + '/:id';
 export const usersUrl = baseUrl + '/users';
