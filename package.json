@@ -1,7 +1,6 @@
 {
   "name": "webshopwolak",
   "version": "0.0.0",
-  "heroku-postbuild": "ng build --prod",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
@@ -11,6 +10,7 @@
     "e2e": "ng e2e",
     "postinstall": "ng build --aot -prod"
   },
+  "heroku-postbuild": "ng build --prod",
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.11",
